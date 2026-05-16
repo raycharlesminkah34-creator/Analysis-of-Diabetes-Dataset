@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy.stats import spearmanr
 
 # Load the dataset
 df = pd.read_csv("diabetes.csv")
@@ -30,8 +31,12 @@ risk_factors.sort_values(ascending=True).plot(kind='barh')
 plt.xlabel("Spearman Correlation with Outcome")
 plt.title("Correlation of Risk Factors with Diabetes Outcome")
 plt.tight_layout()  
-plt.show()  
+plt.show()
 
+#Dtermining whther the correlation of the highest 3 is statistically significant
+for factor in risk_factors.index:
+    corr, p_value = spearmanr(df[factor], df["Outcome"])
+    print(f"Correlation between {factor} and Outcome: {corr:.2f}, p-value: {p_value:.4f}")  
 
 
 
