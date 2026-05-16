@@ -1,42 +1,44 @@
-# Diabetes Analysis Project
+# Analysis of Diabetes Dataset
 
-This project analyzes the `diabetes.csv` dataset to identify risk factors associated with diabetes outcome and to check for multicollinearity among predictors.
+## Overview
+This project explores the Pima Indians Diabetes Dataset to identify which clinical features are most strongly associated with a diabetes diagnosis. The analysis focuses on correlation analysis using Spearman's method and statistical significance testing.
 
-Structure
-- `data/` - raw and processed data (project root `diabetes.csv` present)
-- `src/` - analysis scripts (`analysis.py`)
-- `reports/` - generated results (correlation tables, VIF, figures)
-- `notebooks/` - exploratory notebooks (if any)
+## Dataset
+- **Source:** [Pima Indians Diabetes Database](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+- **Features:** Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, Age, Pregnancies
+- **Target Variable:** Outcome (1 = diabetic, 0 = non-diabetic)
 
-Quick start
-1. Create and activate a virtual environment:
+## Tools & Libraries
+- Python
+- Pandas & NumPy — data loading and manipulation
+- Seaborn & Matplotlib — data visualization
+- SciPy — statistical testing
 
-```bash
-python -m venv .venv
-source .venv/bin/activate   # macOS / Linux
-.venv\Scripts\Activate      # Windows PowerShell
+## What Was Done
+
+### Correlation Analysis
+- Computed a full Spearman correlation matrix across all features
+- Extracted correlations with the `Outcome` variable and ranked them by strength
+- Visualized the full correlation matrix as a heatmap
+- Plotted risk factors as a horizontal bar chart ranked by absolute correlation
+
+### Statistical Significance Testing
+- Applied Spearman's correlation test for each feature against `Outcome`
+- Reported correlation coefficients and p-values to assess significance
+
+## Key Findings
+- **Glucose** showed the strongest correlation with diabetes outcome
+- **BMI** and **Age** were also among the top risk factors
+- All major risk factors returned p-values of < 0.05, confirming statistically significant relationships
+
+## Repository Structure
+```
+Analysis-of-Diabetes-Dataset/
+│
+├── diabetes.csv               # Dataset
+├── eda_notebooks.ipynb        # Full analysis notebook
+└── README.md                  
 ```
 
-2. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Run the analysis script from the project root:
-
-```bash
-python src/analysis.py
-```
-
-What the script produces
-- `reports/correlation_matrix.csv` — Spearman correlation matrix for numeric features
-- `reports/feature_correlation_significance.csv` — Pearson & Spearman r and p-values vs `Outcome`
-- `reports/vif.csv` — Variance Inflation Factors for numeric predictors
-
-Next steps
-- Review `reports/feature_correlation_significance.csv` for significant predictors (p < 0.05)
-- Review `reports/vif.csv` and consider dropping or regularizing features with `VIF > 5` or `VIF > 10`
-- Build a baseline model in `src/` and evaluate performance
-
-If you want, I can help draft a short write-up of the findings to copy into `reports/analysis_summary.md`.
+## Author
+Ray-charles | Biomedical Sciences & Data Analysis
