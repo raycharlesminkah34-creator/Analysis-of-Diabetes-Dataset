@@ -35,10 +35,11 @@ This project explores the Pima Indians Diabetes Dataset to identify which clinic
 ```
 Analysis-of-Diabetes-Dataset/
 │
+|--src                         # script in analysis.py 
 ├── diabetes.csv               # Dataset
-├── eda_notebooks.ipynb        # Full analysis notebook
+├── eda_notebooks.ipynb        # Exploratory Data Analysis
 └── README.md                  
 ```
 
 ## Author
-Ray-charles | Biomedical Sciences & Data Analysis
+Ray-charles | Biomedical Laboratory Sciences & Data Scientist
