@@ -18,3 +18,20 @@ sns.heatmap(correlations, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Matrix of Diabetes Dataset")
 plt.tight_layout()
 plt.show()
+
+# Show only risk factors correlated with outcome (excluding outcome itself)
+risk_factors = outcome_corr[outcome_corr.index != "Outcome"].abs().sort_values(ascending=False)
+print("\nRisk factors sorted by correlation with the outcome variable:")
+print(risk_factors)
+
+# Visualize just the outcome correlations
+plt.figure(figsize=(6,4))
+risk_factors.sort_values(ascending=True).plot(kind='barh')
+plt.xlabel("Spearman Correlation with Outcome")
+plt.title("Correlation of Risk Factors with Diabetes Outcome")
+plt.tight_layout()  
+plt.show()  
+
+
+
+
